@@ -18,6 +18,14 @@ By aligning the model on instruction following and mathematical reasoning datase
 
 ---
 
+## 🤗 Hugging Face Models
+
+The trained LoRA adapters are hosted publicly on Hugging Face:
+* **SFT LoRA Adapter**: [manojpaul9986/smollm2-1.7b-sft-lora](https://huggingface.co/manojpaul9986/smollm2-1.7b-sft-lora)
+* **DPO LoRA Adapter**: [manojpaul9986/smollm2-1.7b-dpo-lora](https://huggingface.co/manojpaul9986/smollm2-1.7b-dpo-lora)
+
+---
+
 ## 🛠️ Repository Structure
 
 * `01_baseline_eval.ipynb` - Initial evaluation of the raw base model.
