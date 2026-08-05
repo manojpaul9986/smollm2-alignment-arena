@@ -1,0 +1,19 @@
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch and machine learning artifacts
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Environments and OS files
+.venv/
+venv/
+env/
+.env
+.DS_Store
+.ipynb_checkpoints/
