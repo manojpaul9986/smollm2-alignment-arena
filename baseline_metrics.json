@@ -1,8 +1,8 @@
 {
   "perplexity": 42.50188446044922,
-  "instruction_following_acc_pct": 40.0,
+  "instruction_following_acc_pct": 20.0,
   "gsm8k_acc_pct": 8.0,
-  "cot_presence_pct": 55.0,
+  "cot_presence_pct": 16.0,
   "instr_samples": [
     {
       "prompt": "List three benefits of regular exercise.",
@@ -43,6 +43,66 @@
     {
       "prompt": "Give a one-line definition of gravity.",
       "response": "The force of attraction between two objects.\n\nWhat is the difference between mass and weight?\n\nMass is the amount of matter in an object. Weight is the force of gravity on an object.\n\nWhat is the difference between weight and mass?\n\nMass is the amount of matter in an object. Weight is the force of gravity on an object.\n\nWhat is the difference between mass and weight?\n\nMass is the amount of matter in an object. Weight"
+    },
+    {
+      "prompt": "Answer the following question in exactly two sentences: What is the main cause of ocean tides?",
+      "response": "The main cause of ocean tides is the gravitational pull of the moon.\n\nThe moon pulls on the oceans, causing the water to bulge toward it. The bulge is larger on the side of the Earth closest to the moon. The bulge is smaller on the side of the Earth farthest from the moon.\n\nThe bulge of water on the side of the Earth closest to the moon is called the high tide. The bulge of water on the side of the Earth farthest from the moon is"
+    },
+    {
+      "prompt": "List exactly 4 items you would need to build a wooden birdhouse, no more and no less.",
+      "response": "### 1.\n\nWhat are the 4 items you need to build a wooden birdhouse?\n\n### 2.\n\nWhat are the 4 items you need to build a wooden birdhouse?\n\n### 3.\n\nWhat are the 4 items you need to build a wooden birdhouse?\n\n### 4.\n\nWhat are the 4 items you need to build a wooden birdhouse?\n\n### 5."
+    },
+    {
+      "prompt": "Explain the concept of inflation to a 5-year-old in one paragraph of exactly three sentences.",
+      "response": "Inflation is when the price of things goes up.\n\nExplain the concept of inflation to a 5-year-old in one paragraph of exactly three sentences.\n\nInflation is when the price of things goes up.\n\nExplain the concept of inflation to a 5-year-old in one paragraph of exactly three sentences.\n\nInflation is when the price of things goes up.\n\nExplain the concept of inflation to a 5-year-old"
+    },
+    {
+      "prompt": "Respond ONLY with a JSON object containing the keys 'capital' and 'population' for the country France.",
+      "response": "const getCountry = (country) => {\n  const url = `https://restcountries.eu/rest/v2/name/${country}`;\n  return fetch(url)\n    .then((response) => response.json())\n    .then((data) => {\n      return data[0];\n    })\n    .catch((error) => {\n      console.log(error);\n    });\n};\n\ngetCountry('France').then((data)"
+    },
+    {
+      "prompt": "Write a haiku about artificial intelligence.",
+      "response": "Haiku is a form of Japanese poetry that consists of three lines with a syllable pattern of 5-7-5. It's a simple yet powerful way to express your thoughts and feelings about a particular topic. In this case, we'll be using haiku to explore the concept of artificial intelligence.\n\nHere's an example of a haiku about artificial intelligence:\n\nArtificial intelligence\nLearning and growing,\nA new friend for all of us.\n\nThis haiku"
+    },
+    {
+      "prompt": "Give me a list of three distinct colors, but do not include the color blue or red.",
+      "response": "The list of colors is:\n\n{red, green, yellow, blue, orange, purple, brown, black, white}\n\nThe list of colors that are not blue or red is:\n\n{red, green, yellow, blue, orange, purple, brown, black, white}\n\nThe list of colors that are not blue or red is:\n\n{red, green, yellow, blue, orange, purple, brown, black, white}"
+    },
+    {
+      "prompt": "Tell me the name of the largest ocean on Earth, and write it in all capital letters.",
+      "response": "The answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer"
+    },
+    {
+      "prompt": "Provide two antonyms for the word 'cold', separated by a semicolon.",
+      "response": "Antonyms for cold:\n\nwarm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot, warm, hot"
+    },
+    {
+      "prompt": "In exactly five words, describe what a book is.",
+      "response": "A book is a collection of words.\n\nWhat is the difference between a book and a magazine?\n\nA book is a collection of words. A magazine is a collection of words.\n\nWhat is the difference between a book and a newspaper?\n\nA book is a collection of words. A newspaper is a collection of words.\n\nWhat is the difference between a book and a magazine?\n\nA book is a collection of words. A magazine is a collection"
+    },
+    {
+      "prompt": "What is the result of 15 multiplied by 4, plus 12? Provide only the final number.",
+      "response": "### 10.\n\nWhat is the result of 15 multiplied by 4, plus 12? Provide only the final number.\n\n### 11.\n\nWhat is the result of 15 multiplied by 4, plus 12? Provide only the final number.\n\n### 12.\n\nWhat is the result of 15 multiplied by 4, plus 12? Provide only the final number."
+    },
+    {
+      "prompt": "List three different programming languages that are statically typed.",
+      "response": "Answer: C\n\nQuestion No: 10\n\nWhich of the following is a valid way to create a new instance of a class?\n\n  1. new ClassName()\n\n  2. ClassName()\n\n  3. new ClassName()\n\n  4. ClassName()\n\nAnswer: A\n\nQuestion No: 11\n\nWhich of the following is a valid way to create a new instance of a class?\n\n  1. new ClassName()\n\n  2."
+    },
+    {
+      "prompt": "Write a short sentence where every word starts with the letter 'S'.",
+      "response": "Example:\n\n* The sun shines brightly.\n\n**Step 4: Practice Your Pronunciation**\n\n* **What is pronunciation?**: Pronunciation refers to the way words are said out loud.\n* **Why practice pronunciation?**: Accurate pronunciation helps others understand what you're saying.\n* **How to practice pronunciation**:\n\t+ Repeat the sentence you wrote earlier several times, paying attention to the sounds and rhythms.\n\t+ Listen to native speakers or recordings"
+    },
+    {
+      "prompt": "Who wrote the play Romeo and Juliet? Answer with only the author's name.",
+      "response": "Who wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare\n\nWho wrote the play Romeo and Juliet?\n\nWilliam Shakespeare"
+    },
+    {
+      "prompt": "What are the three physical states of matter? List them separated by commas.",
+      "response": "The three physical states of matter are solid, liquid, and gas.\n\nWhat is the difference between a solid and a liquid?\n\nA solid has a definite shape and volume, while a liquid has no definite shape but has a definite volume.\n\nWhat is the difference between a solid and a gas?\n\nA solid has a definite shape and volume, while a gas has no definite shape and volume.\n\nWhat is the difference between a solid and a liquid?"
+    },
+    {
+      "prompt": "State the name of the chemical symbol for Gold in exactly one word.",
+      "response": "### Question 10\n\nState the name of the chemical symbol for Silver in exactly one word.\n\n### Question 11\n\nState the name of the chemical symbol for Mercury in exactly one word.\n\n### Question 12\n\nState the name of the chemical symbol for Lead in exactly one word.\n\n### Question 13\n\nState the name of the chemical symbol for Tin in exactly one word.\n\n### Question 14"
     }
   ],
   "gsm8k_samples": [
@@ -61,7 +121,7 @@
     {
       "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
       "gold": "70000",
-      "pred": "100",
+      "pred": "5",
       "response": "Step 1:  Find the total cost of the house.\n80,000 + 50,000 = <<80000+50000=130000>>130,000\n\nStep 2:  Find the total value of the house after repairs.\n130,000 + 50,000 = <<130000+50000=180000>>180,000\n\nStep 3:  Find the percent of increase.\n(180,000 - 130,000) / 130,000 = 0.3076923077\n0.3076923077 * 100 = <<0.3076923077*100=30.77>>30.77%\n\nStep 4:  Find the profit.\n180,000 * 0.3077 = <<180000*0.3077=55810>>55,810\n\n#### 5\n\nA man buys a shirt for $20.00 and a pair of pants for $80.00.  The store offers a 10% discount on all purchases over $100.00.  What is the final cost?\nThe shirt cost $20.00 and the pants cost $80.00 so the total cost is 20 + 80 = $<<20+80=100"
     },
     {
@@ -73,7 +133,7 @@
     {
       "question": "Every day, Wendi feeds each of her chickens three cups of mixed chicken feed, containing seeds, mealworms and vegetables to help keep them healthy.  She gives the chickens their feed in three separate meals. In the morning, she gives her flock of chickens 15 cups of feed.  In the afternoon, she gives her chickens another 25 cups of feed.  How many cups of feed does she need to give her chickens in the final meal of the day if the size of Wendi's flock is 20 chickens?",
       "gold": "20",
-      "pred": "40",
+      "pred": "1",
       "response": "15 cups of feed for 1 chicken\n20 chickens * 15 cups of feed = 300 cups of feed\n25 cups of feed for 1 chicken\n20 chickens * 25 cups of feed = 500 cups of feed\n300 cups of feed for 1 chicken + 500 cups of feed for 1 chicken = 800 cups of feed\n800 cups of feed for 20 chickens = 800/20 = 40 cups of feed\n\n#### 1 comment:\n\n1. 40 cups of feed"
     },
     {

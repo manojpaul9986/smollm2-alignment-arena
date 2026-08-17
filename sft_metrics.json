@@ -1,8 +1,8 @@
 {
   "perplexity": 47.08287811279297,
-  "instruction_following_acc_pct": 100.0,
+  "instruction_following_acc_pct": 64.0,
   "gsm8k_acc_pct": 37.0,
-  "cot_presence_pct": 15.0,
+  "cot_presence_pct": 12.0,
   "instr_samples": [
     {
       "prompt": "List three benefits of regular exercise.",
@@ -43,6 +43,66 @@
     {
       "prompt": "Give a one-line definition of gravity.",
       "response": "Gravity is the force that attracts two objects towards each other."
+    },
+    {
+      "prompt": "Answer the following question in exactly two sentences: What is the main cause of ocean tides?",
+      "response": "The main cause of ocean tides is the gravitational pull of the moon on the Earth's oceans. As the moon orbits the Earth, it creates a bulge in the ocean water, causing high tide on the side closest to the moon and low tide on the opposite side. This phenomenon is known as the tidal force."
+    },
+    {
+      "prompt": "List exactly 4 items you would need to build a wooden birdhouse, no more and no less.",
+      "response": "1. Wooden planks\n2. Nails\n3. Hammer\n4. Saw\n\nThe list of items needed to build a wooden birdhouse is as follows:\n\n1. Wooden planks\n2. Nails\n3. Hammer\n4. Saw"
+    },
+    {
+      "prompt": "Explain the concept of inflation to a 5-year-old in one paragraph of exactly three sentences.",
+      "response": "Inflation is like when your favorite ice cream shop raises the price of your favorite ice cream. It's when things cost more than they used to. It's like if your toy car that cost $5 now costs $10. That's inflation."
+    },
+    {
+      "prompt": "Respond ONLY with a JSON object containing the keys 'capital' and 'population' for the country France.",
+      "response": "{\n  \"capital\": \"Paris\",\n  \"population\": 67.37\n}"
+    },
+    {
+      "prompt": "Write a haiku about artificial intelligence.",
+      "response": "Artificial intelligence is a marvel,\nA gift from the future,\nA tool that can change our lives."
+    },
+    {
+      "prompt": "Give me a list of three distinct colors, but do not include the color blue or red.",
+      "response": "Here are three distinct colors that do not include blue or red:\n\n1. Green\n2. Yellow\n3. Purple"
+    },
+    {
+      "prompt": "Tell me the name of the largest ocean on Earth, and write it in all capital letters.",
+      "response": "THE OCEAN\n\nThe largest ocean on Earth is the Pacific Ocean."
+    },
+    {
+      "prompt": "Provide two antonyms for the word 'cold', separated by a semicolon.",
+      "response": "Hot; warm"
+    },
+    {
+      "prompt": "In exactly five words, describe what a book is.",
+      "response": "A book is a collection of pages bound together, often containing stories, information, or ideas."
+    },
+    {
+      "prompt": "What is the result of 15 multiplied by 4, plus 12? Provide only the final number.",
+      "response": "To solve this problem, we follow the order of operations, which states that multiplication and division should be performed before addition and subtraction.\n\n15 multiplied by 4 is 60.\n60 plus 12 is 72.\nThe final result is 72.\nThe answer is: 72"
+    },
+    {
+      "prompt": "List three different programming languages that are statically typed.",
+      "response": "1. Java\n2. C++\n3. Rust"
+    },
+    {
+      "prompt": "Write a short sentence where every word starts with the letter 'S'.",
+      "response": "The sun sets slowly on the sea."
+    },
+    {
+      "prompt": "Who wrote the play Romeo and Juliet? Answer with only the author's name.",
+      "response": "William Shakespeare wrote Romeo and Juliet."
+    },
+    {
+      "prompt": "What are the three physical states of matter? List them separated by commas.",
+      "response": "The three physical states of matter are:\n\n1. Solid: A solid has a definite shape and volume. It has a fixed volume and a definite shape. The particles in a solid are closely packed together and vibrate in place. Examples of solids include ice, wood, and steel.\n\n2. Liquid: A liquid has a definite volume but no definite shape. It takes the shape of its container. The particles in a liquid are loosely packed together and move around freely. Examples of liquids"
+    },
+    {
+      "prompt": "State the name of the chemical symbol for Gold in exactly one word.",
+      "response": "Gold is represented by the chemical symbol Au."
     }
   ],
   "gsm8k_samples": [
