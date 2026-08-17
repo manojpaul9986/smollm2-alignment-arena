@@ -47,10 +47,26 @@ LORA_DROPOUT = 0.05
 LORA_TARGET_MODULES = ["q_proj", "v_proj", "k_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
 
 # ---------------------------------------------------------------------
-# LLM Judge Configuration (Gemini API)
 # ---------------------------------------------------------------------
-# Ensure you upload this as a Kaggle Secret or set it in your environment
+# LLM Judge Configuration (Groq & Gemini fallbacks)
+# ---------------------------------------------------------------------
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+if not GEMINI_API_KEY:
+    try:
+        from kaggle_secrets import UserSecretsClient
+        user_secrets = UserSecretsClient()
+        GEMINI_API_KEY = user_secrets.get_secret("GEMINI_API_KEY")
+    except Exception:
+        pass
+
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+if not GROQ_API_KEY:
+    try:
+        from kaggle_secrets import UserSecretsClient
+        user_secrets = UserSecretsClient()
+        GROQ_API_KEY = user_secrets.get_secret("GROQ_API_KEY")
+    except Exception:
+        pass
 
 def set_seed(seed: int = SEED):
     random.seed(seed)

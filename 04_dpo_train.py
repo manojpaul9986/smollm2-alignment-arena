@@ -12,7 +12,7 @@ if __name__ == "__main__":
     ### CELL 2: config ###
     from config import (
         set_seed, save_state, find_latest_checkpoint, MODEL_ID, SFT_OUT_DIR, DPO_OUT_DIR, PUSH_TO_HUB, HUB_DPO_REPO,
-        LORA_R, LORA_ALPHA, LORA_DROPOUT, LORA_TARGET_MODULES
+        LORA_R, LORA_ALPHA, LORA_DROPOUT, LORA_TARGET_MODULES, BASE_DIR
     )
     set_seed()
     save_state(phase="dpo_train_start")
@@ -20,37 +20,67 @@ if __name__ == "__main__":
     ### CELL 3: load + filter + subsample preference pairs ###
     from datasets import load_dataset
     
-    raw = load_dataset("argilla/distilabel-intel-orca-dpo-pairs", split="train")
+    print("Loading HuggingFaceH4/ultrafeedback_binarized...")
+    raw = load_dataset("HuggingFaceH4/ultrafeedback_binarized", split="train_prefs")
     
-    TARGET_N = 1000
-    MAX_CHARS = 2500
+    TARGET_N = 1500
+    MAX_CHARS = 1200
     
-    def is_cot_signal_and_short(ex):
-        chosen, rejected = ex["chosen"], ex["rejected"]
-        if len(chosen) > MAX_CHARS or len(rejected) > MAX_CHARS:
+    def is_high_quality_and_short(ex):
+        chosen = ex["chosen"]
+        rejected = ex["rejected"]
+        chosen_text = chosen[-1]["content"] if isinstance(chosen, list) else str(chosen)
+        rejected_text = rejected[-1]["content"] if isinstance(rejected, list) else str(rejected)
+        
+        if len(chosen_text) > MAX_CHARS or len(rejected_text) > MAX_CHARS:
             return False
-        chosen_is_longer = len(chosen) > len(rejected) * 1.1
-        return chosen_is_longer
+            
+        # Ensure a strong score margin (quality gap >= 1.0) between chosen & rejected
+        score_c = ex.get("score_chosen", 0.0)
+        score_r = ex.get("score_rejected", 0.0)
+        if score_c is not None and score_r is not None:
+            if (score_c - score_r) < 1.0:
+                return False
+                
+        return True
     
-    filtered = raw.filter(is_cot_signal_and_short, num_proc=4)
-    print(f"Filtered pool: {len(filtered)} (from {len(raw)})")
+    filtered = raw.filter(is_high_quality_and_short, num_proc=4)
+    print(f"Filtered high-contrast UltraFeedback pool: {len(filtered)} (from {len(raw)})")
     
     filtered = filtered.shuffle(seed=42)
     dpo_train = filtered.select(range(min(TARGET_N, len(filtered))))
-    dpo_eval = filtered.select(range(TARGET_N, TARGET_N + 100))
+    
+    # Load test_prefs for evaluation
+    raw_test = load_dataset("HuggingFaceH4/ultrafeedback_binarized", split="test_prefs")
+    filtered_test = raw_test.filter(is_high_quality_and_short, num_proc=4).shuffle(seed=42)
+    dpo_eval = filtered_test.select(range(min(100, len(filtered_test))))
     
     def to_dpo_format(ex):
-        system_prompt = ex.get("system", "")
-        user_prompt = ex.get("input", "") or ex.get("question", "")
+        prompt = ex["prompt"]
+        chosen = ex["chosen"]
+        rejected = ex["rejected"]
         
-        prompt_msgs = []
-        if system_prompt:
-            prompt_msgs.append({"role": "system", "content": system_prompt})
-        prompt_msgs.append({"role": "user", "content": user_prompt})
-        
-        chosen_msgs = [{"role": "assistant", "content": ex["chosen"]}]
-        rejected_msgs = [{"role": "assistant", "content": ex["rejected"]}]
-        
+        if isinstance(prompt, list):
+            prompt_msgs = prompt
+        else:
+            prompt_msgs = [{"role": "user", "content": str(prompt)}]
+            
+        if isinstance(chosen, list):
+            if len(chosen) > 1 and chosen[-1]["role"] == "assistant":
+                chosen_msgs = [{"role": "assistant", "content": chosen[-1]["content"]}]
+            else:
+                chosen_msgs = chosen
+        else:
+            chosen_msgs = [{"role": "assistant", "content": str(chosen)}]
+            
+        if isinstance(rejected, list):
+            if len(rejected) > 1 and rejected[-1]["role"] == "assistant":
+                rejected_msgs = [{"role": "assistant", "content": rejected[-1]["content"]}]
+            else:
+                rejected_msgs = rejected
+        else:
+            rejected_msgs = [{"role": "assistant", "content": str(rejected)}]
+            
         return {
             "prompt": prompt_msgs,
             "chosen": chosen_msgs,
@@ -66,8 +96,24 @@ if __name__ == "__main__":
     from transformers import AutoTokenizer, AutoModelForCausalLM
     from peft import PeftModel, LoraConfig
     import torch
+    import os
     
-    tokenizer = AutoTokenizer.from_pretrained(SFT_OUT_DIR)
+    # Ensure SFT checkpoint exists locally, or download it from Hugging Face Hub
+    if not os.path.exists(SFT_OUT_DIR) or not os.listdir(SFT_OUT_DIR):
+        print(f"SFT directory {SFT_OUT_DIR} not found locally. Downloading from Hugging Face Hub: manojpaul9986/smollm2-1.7b-sft-lora...")
+        from huggingface_hub import snapshot_download
+        snapshot_download(repo_id="manojpaul9986/smollm2-1.7b-sft-lora", local_dir=SFT_OUT_DIR)
+        print("SFT adapter downloaded successfully.")
+    
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(SFT_OUT_DIR)
+    except Exception:
+        print(f"Loading tokenizer directly from base model {MODEL_ID}...")
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+        
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+        
     if tokenizer.chat_template is None:
         tokenizer.chat_template = (
             "{% for message in messages %}"
@@ -99,12 +145,12 @@ if __name__ == "__main__":
     
     dpo_config = DPOConfig(
         output_dir=DPO_OUT_DIR,
-        num_train_epochs=1,
+        num_train_epochs=3,
         per_device_train_batch_size=1,       # smaller batch size for 1.7B DPO (requires 2 forward passes per pair)
-        gradient_accumulation_steps=16,      # effective batch size = 16
-        learning_rate=1e-6,                  # lowered from 5e-6 to prevent policy collapse
-        beta=0.1,
-        max_length=1024,
+        gradient_accumulation_steps=8,       # effective batch size = 8
+        learning_rate=2e-5,                  # increased to 2e-5 to allow proper policy shift
+        beta=0.05,                           # lowered from 0.1 to amplify DPO gradient signal
+        max_length=512,                      # reduced from 1024 for faster execution & lower memory
         logging_steps=20,
         save_strategy="steps",
         save_steps=50,
@@ -113,8 +159,7 @@ if __name__ == "__main__":
         eval_steps=50,
         fp16=True,
         max_grad_norm=0.5,                   # gradient clipping to prevent exploding gradients in float16
-        warmup_ratio=0.1,                    # longer warmup for early stability
-        disable_dropout=True,                # standard DPO practice to prevent policy divergence
+        warmup_steps=20,                     # warmup steps compatible across all TRL versions
         report_to="none",
         push_to_hub=PUSH_TO_HUB,
         hub_model_id=HUB_DPO_REPO if PUSH_TO_HUB else None,
@@ -139,6 +184,17 @@ if __name__ == "__main__":
     
     if trainer.is_world_process_zero():
         tokenizer.save_pretrained(DPO_OUT_DIR)
+        
+        # Create a zip archive of the DPO adapter folder for easy download in Kaggle
+        import shutil
+        zip_path = os.path.join(BASE_DIR, "dpo_lora_adapter")
+        print(f"Zipping DPO adapter folder {DPO_OUT_DIR} to {zip_path}.zip...")
+        try:
+            shutil.make_archive(zip_path, 'zip', DPO_OUT_DIR)
+            print("Zipping complete. You can download dpo_lora_adapter.zip directly from Kaggle outputs.")
+        except Exception as e:
+            print(f"Error zipping adapter folder: {e}")
+            
         if PUSH_TO_HUB:
             trainer.push_to_hub()
         save_state(phase="dpo_train_done", notes=f"saved adapter to {DPO_OUT_DIR}")

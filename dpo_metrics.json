@@ -1,6 +1,6 @@
 {
   "perplexity": 47.04666519165039,
-  "instruction_following_acc_pct": 70.0,
+  "instruction_following_acc_pct": 100.0,
   "gsm8k_acc_pct": 37.0,
   "cot_presence_pct": 15.0,
   "instr_samples": [

@@ -27,8 +27,9 @@ pip_cell = {
     "metadata": {},
     "outputs": [],
     "source": [
-        "# Install required dependencies\n",
-        "!pip install -q -U transformers trl datasets accelerate peft evaluate bitsandbytes huggingface_hub matplotlib pandas scikit-learn gradio torchao\n"
+        "# Install required dependencies and resolve pre-installed torchao conflicts\n",
+        "!pip uninstall -y torchao\n",
+        "!pip install -q -U transformers trl datasets accelerate peft evaluate bitsandbytes huggingface_hub matplotlib pandas scikit-learn gradio\n"
     ]
 }
 

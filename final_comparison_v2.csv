@@ -1,5 +1,0 @@
-Metric,Base,SFT,DPO
-Perplexity,42.53591537475586,47.05511474609375,47.04666519165039
-Instruction-Follow Acc (%),60.0,80.0,70.0
-GSM8K Acc (%),7.0,15.0,37.0
-CoT Presence (%),52.0,16.0,15.0
