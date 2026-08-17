@@ -1,0 +1,272 @@
+Category,Prompt,Max_Tokens,Temperature,Top_P,Base_Response,SFT_Response,DPO_Response
+Mathematical Reasoning,"If I have $50 and spend 40% of it, how much do I have left? Show calculation.",200,0.0,1.0,"• 1.
+
+### If I have $50 and spend 40% of it, how much do I have left? Show calculation. • 2. • 3. • 4. • 5. • 6. • 7. • 8. • 9. • 10. • 11. • 12. • 13. • 14. • 15. • 16. • 17. • 18. • 19. • 20. • 21. • 22. • 23. • 24. • 25. • 26. • 27. • 28. • 29. • 30. • 31. • 32. • 33. • 34. • 35. • 36","To find out how much money I have left after spending 40% of $50, we first need to calculate 40% of $50.
+
+40% of $50 can be calculated by multiplying $50 by 0.40.
+
+$50 * 0.40 = $20
+
+So, I spent $20 on my purchase.
+
+Now, to find out how much money I have left, we subtract the amount I spent from the original amount of money I had:
+
+$50 - $20 = $30
+
+Therefore, I have $30 left.
+
+So, the answer is: 30","To find out how much money is left after spending 40% of $50, we first calculate 40% of $50.
+
+40% is the same as $\frac{40}{100}$, which simplifies to 0.4.
+
+So, to find 40% of $50, we multiply $50 by 0.4:
+
+$50 * 0.4 = $20
+
+Therefore, after spending 40% of $50, you have $50 - $20 = $30 left.
+
+So, you have $\boxed{30}$  dollars left."
+Multi-Step Arithmetic,A store has 120 apples. They sell 45 in the morning and 30 in the afternoon. How many are left?,200,0.0,1.0,"Solution:
+
+Given,
+
+Number of apples = 120
+
+Number of apples sold in the morning = 45
+
+Number of apples sold in the afternoon = 30
+
+Number of apples left = 120 – (45 + 30)
+
+= 120 – 75
+
+= 45
+
+Therefore, 45 apples are left.
+
+### Question 10. A student multiplied 7236 by 65 instead of multiplying by 56. By how much was his answer greater than the correct answer?
+
+Solution:
+
+Given,
+
+Student multiplied 7236 by 65 instead of multiplying by 56.
+
+Difference between 65 and 56 = 9
+
+So, the answer is greater by 9.
+
+### Question 11. To stitch a shirt,","The store has 120 apples and sells 45 in the morning and 30 in the afternoon, so they have 120 - 45 - 30 = 45 apples left.
+#### 45
+The answer is: 45","To find out how many apples are left, we subtract the number of apples sold in the morning and afternoon from the total number of apples.
+
+Number of apples sold in the morning: 45
+Number of apples sold in the afternoon: 30
+
+Total number of apples sold: 45 + 30 = 75
+
+Number of apples left: 120 - 75 = 45
+
+So, there are $\boxed{45}$  apples left."
+Conceptual Analogy,What is the difference between a software library and a framework? Explain with a simple analogy.,280,0.2,0.9,"A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code that can be used by other programs.
+
+A software library is a collection of reusable code that can be used by other programs. A software framework is a collection of reusable code","A software library is a collection of pre-written code that provides functionality for a specific purpose. It can be used by developers to add features to their applications without having to write the code from scratch. For example, a library for handling file operations can be used to read and write files in a program.
+
+A framework, on the other hand, is a more comprehensive set of tools and guidelines that provide a structure for building applications. It typically includes a set of classes, objects, and methods that developers can use to create their own applications. Frameworks often include a set of rules and conventions that developers must follow to ensure their applications are consistent and maintainable. For example, a web application framework might provide a set of classes and methods for handling HTTP requests and responses, database access, and user authentication.
+
+To understand the difference between a library and a framework, think of a library as a toolbox with specific tools for a particular job, and a framework as a blueprint for building a house. A library provides the tools, while a framework provides the structure and guidelines for building the house.","A software library and a framework are two distinct concepts in the world of software development. While they share some similarities, they serve different purposes and are used in different ways.
+
+To help you understand the difference, let's use a simple analogy:
+
+Imagine a library as a software library. A library is a collection of resources, such as books, that are organized and available for use. Similarly, a software library is a collection of pre-written code and functions that developers can use in their applications. These libraries provide reusable code that can be easily integrated into a project, saving developers time and effort.
+
+Now, let's compare this to a framework. A framework is like a blueprint or a set of guidelines that developers follow to structure their software. It provides a set of rules and principles that dictate how the software should be designed and structured. Frameworks typically include a set of classes, objects, and interfaces that developers can use to build their applications.
+
+In essence, a software library is a collection of reusable code, while a framework is a set of guidelines and structures that developers follow to build their applications. Both are essential tools in the software development process, but they serve different purposes and are used in different ways.
+
+I hope this analogy helps clarify the difference between a software library and a framework. If you have any further questions, feel free to ask!"
+Scientific Explanation,Explain in simple terms why the sky is blue.,250,0.2,0.9,"The sky is blue because of the scattering of light by molecules in the atmosphere.
+
+When sunlight enters the atmosphere, it is made up of different wavelengths of light. Blue light has a shorter wavelength than red light. When sunlight enters the atmosphere, it is scattered by molecules in the air. Blue light is scattered more than red light. This is why the sky appears blue.
+
+Q2. What is the difference between a rainbow and a spectrum?
+
+A rainbow is a natural phenomenon that occurs when sunlight is refracted and dispersed by raindrops. A spectrum is an artificial phenomenon that is created by splitting white light into its component colors using a prism.
+
+Q3. What is the difference between a rainbow and a spectrum?
+
+A rainbow is a natural phenomenon that occurs when sunlight is refracted and dispersed by raindrops. A spectrum is an artificial phenomenon that is created by splitting white light into its component colors using a prism.
+
+Q4. What is the difference between a rainbow and a spectrum?
+
+A rainbow is a natural phenomenon that occurs when sunlight is refracted and dispersed by raindrops. A spectrum is an artificial phenomenon that is created by splitting white light into its component","The sky appears blue because of a phenomenon called Rayleigh scattering. When sunlight reaches Earth's atmosphere, it is made up of different colors, each with a different wavelength. Blue light has a shorter wavelength than red light, so it gets scattered more easily by molecules and tiny particles in the air. This scattering effect makes the sky appear blue during the day. At sunrise and sunset, the sunlight has to pass through more of Earth's atmosphere, causing even more scattering and making the sky appear red or orange.","The sky appears blue because of a phenomenon called Rayleigh scattering. When sunlight reaches Earth's atmosphere, it is made up of different colors, each with a different wavelength. Blue light has a shorter wavelength than other colors, so it gets scattered more easily by the molecules in the air. This scattering causes the blue light to reach our eyes, making the sky appear blue.
+
+When the sun is low in the sky, like during sunrise or sunset, the light has to pass through more of the atmosphere, which scatters even more blue light. This is why the sky often looks red, orange, or pink during these times.
+
+It's important to note that the sky is not actually blue, but rather the color we perceive due to the scattering of sunlight. The sky is actually a mixture of all colors, but our eyes are more sensitive to blue light, so we see it as the dominant color."
+Multi-Constraint Advice,What are three practical tips for staying focused while studying?,280,0.3,0.9,"Here are some practical tips for staying focused while studying:
+
+• Create a study schedule.
+• Eliminate distractions.
+• Take breaks.
+• Use the Pomodoro Technique.
+• Use a timer.
+• Eliminate distractions.
+• Get organized.
+• Use a planner.
+
+## What is the formula for calculating the area of a circle?
+
+The area of a circle is pi times the radius squared (A = π r²). Learn how to use this formula to find the area of a circle when given the diameter.
+
+## What is the formula for calculating the area of a triangle?
+
+The area of a triangle is defined as the total space that is enclosed by any particular triangle. The basic formula to find the area of a given triangle is A = 1/2 × b × h, where b is the base and h is the height of the given triangle.
+
+## How do you find the area of a circle with the diameter?
+
+The area of a circle is pi times the radius squared (A = π r²). Learn how to use this formula to find the area of a circle when given the diameter.
+
+## What is the formula for calculating the area of a rectangle?
+
+The area of a rectangle is the product of its length and width.
+
+## How","1. Create a dedicated study space: Having a specific area in your home where you can focus on your studies can help you stay motivated and avoid distractions.
+2. Break down your study sessions: Instead of trying to cram all your studying into one long session, break it up into smaller, more manageable chunks. This can help you stay focused and retain information better.
+3. Take regular breaks: It's important to give your brain a break every now and then. Taking short breaks during your study sessions can help you stay focused and avoid burnout.","1. Create a dedicated study space: Designate a specific area in your home where you can focus solely on studying without any distractions. This could be a quiet corner in your room, a desk in your library, or even a coffee shop if you prefer the ambiance. Having a designated study space helps signal to your brain that it's time to concentrate and work on your studies.
+
+2. Set specific goals and break them down: Before you start studying, take a few minutes to identify the specific objectives you want to achieve. Break these goals down into smaller, manageable tasks. This will help you stay focused on the task at hand and prevent you from getting overwhelmed by the larger goal.
+
+3. Use the Pomodoro Technique: The Pomodoro Technique is a time management method that involves breaking your study sessions into short, focused intervals (typically 25 minutes) separated by short breaks. After every interval, take a 5-minute break to recharge. This technique helps maintain your focus and prevents burnout, allowing you to stay productive for longer periods.
+
+By implementing these practical tips, you can stay focused while studying and make the most of your study time."
+Professional Communication,Write a polite email to a customer explaining that their shipment will be delayed by 2 days due to weather conditions.,260,0.3,0.9,"**Step 6: Follow Up and Provide Updates**
+
+Keep track of your progress and communicate regularly with the customer:
+
+* **Send a follow-up email**: Inform the customer about the delay and offer alternative solutions, such as expedited shipping or next-day delivery.
+* **Update the customer's status**: Inform them about the delay and provide regular updates on the shipment's progress.
+* **Resolve any issues**: Address any concerns or complaints raised by the customer promptly and professionally.
+
+**Additional Tips and Reminders**
+
+* **Stay organized**: Keep records of your correspondence, including emails, phone calls, and handwritten notes.
+* **Practice active listening**: Pay attention to the customer's concerns and respond thoughtfully.
+* **Be respectful**: Treat the customer with kindness and empathy, even if you're experiencing delays yourself.
+* **Follow company policies**: Ensure you adhere to your organization's guidelines and procedures regarding shipping delays.
+
+By following these steps and tips, you'll be well-equipped to handle shipping delays professionally and effectively. Remember to stay calm, patient, and attentive to the customer's needs throughout the process. Good luck! Chapter 10: Understanding Different Types of Relationships
+
+In our world, there","Dear Customer,
+
+I hope this email finds you well. I wanted to let you know that due to the recent weather conditions, your shipment of goods has been delayed by 2 days. I understand that this may be a concern for you, and I apologize for any inconvenience this may cause.
+
+I've been working closely with our logistics team to ensure that we can still deliver your goods as soon as possible. We are currently reviewing the situation and will keep you updated as soon as we have more information.
+
+In the meantime, please feel free to contact our customer service team at any time if you have any questions or concerns. We are here to support you and help you navigate any challenges that may arise.
+
+Thank you for your understanding and patience.
+
+Best regards,
+Alex","Dear John,
+
+I hope this email finds you well. I wanted to touch base with you regarding the delayed shipment of your order.
+
+Due to the recent weather conditions, our team has encountered some challenges in transporting your items. As a result, we are currently experiencing a delay of 2 days. We understand that this may be a minor inconvenience, but we are committed to ensuring that your order arrives as quickly as possible.
+
+We appreciate your patience and understanding during this time. If you have any questions or concerns, please don't hesitate to reach out. We will continue to work diligently to resolve this issue and ensure that your order is on its way as soon as we can.
+
+Thank you for your understanding and cooperation.
+
+Best regards,
+Emily"
+Creative Coding Scenario (Higher Temp Sweep),Write a Python function to check if a string is a palindrome. Include docstrings and an example.,280,0.4,0.95,"def is_palindrome(s):
+    """"""
+    Check if a string is a palindrome
+    """"""
+    if s == s[::-1]:
+        return True
+    else:
+        return False
+
+print(is_palindrome('radar'))
+
+# Write a Python function to check whether a string is pangram or not. Include docstrings and an example.
+
+def is_pangram(s):
+    """"""
+    Check if a string is pangram
+    """"""
+    for i in 'abcdefghijklmnopqrstuvwxyz':
+        if i not in s.lower():
+            return False
+    return True
+
+print(is_pangram('The quick brown fox jumps over the lazy dog'))
+
+# Write a Python function to check whether a string is pangram or not. Include docstrings and an example.
+
+def is_pangram(s):
+    """"""
+    Check if a string is pangram
+    """"""
+    for i in 'abcdefghijklmnopqrstuvwxyz':
+        if i not in s.lower():
+            return False
+    return True
+
+print(is_pangram('The quick brown fox jumps over the lazy dog'))
+
+# Write a Python function to check whether a string is pangram or not. Include docstrings and an","Here is the implementation of the function:
+
+```python
+def is_palindrome(s):
+    return s == s[::-1]
+```
+
+The function takes a string `s` as input and returns `True` if the string is a palindrome and `False` otherwise. The function uses slicing to reverse the string and compares it with the original string.","Here's how you could implement this function:
+
+```python
+def is_palindrome(string):
+    """"""
+    Checks if a given string is a palindrome.
+
+    A palindrome is a word, phrase, or sequence of characters that reads the same forwards and backwards.
+
+    This function takes a string as input and checks if it is a palindrome by comparing it to its reverse.
+
+    It includes docstrings and an example.
+    """"""
+    # Check if the string is empty
+    if not string:
+        return False
+
+    # Check if the string is a palindrome
+    reverse_string = string[::-1]
+    return string == reverse_string
+
+# Example usage
+result = is_palindrome(""racecar"")  # True
+print(result)  # True
+result = is_palindrome(""hello"")  # False
+print(result)  # False
+```
+
+In this implementation:
+
+- The `is_palindrome` function takes a string as input.
+- It first checks if the string is empty, as an empty string is not considered a palindrome.
+- If the string is not empty, it calculates the reverse of the string using slicing (`string[::-1]`).
+- Finally, it compares the original string to its reverse to determine if the string"

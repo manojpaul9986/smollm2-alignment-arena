@@ -100,6 +100,27 @@ In initial iterations using length-biased heuristic datasets (Orca), DPO produce
 
 ---
 
+## 🎭 Qualitative Generation Showcase & Head-to-Head Comparison
+
+The table below summarizes model behavior across diverse capability domains tested in the interactive Arena (`arena_showcase.csv`):
+
+| Domain | Prompt | Base Model (SmolLM2-1.7B) | SFT Model (SmolTalk) | DPO Model (UltraFeedback) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Math Reasoning** | *"If I have $50 and spend 40% of it, how much do I have left?"* | ❌ Collapses into infinite numeric list (`• 1. • 2. ... • 36`) | ⚠️ Calculates correctly, but repeats conclusion 3× | 🌟 Shows $\frac{40}{100} \to 0.4$ algebraic steps with clean $\boxed{30}$ boxed format |
+| **Multi-Step Arithmetic** | *"A store has 120 apples. They sell 45 in the morning and 30 in the afternoon. How many left?"* | ❌ Solves 45, then hallucinates unrelated textbook questions | ⚠️ Brief 1-line answer (`120-45-30=45 #### 45`) | 🌟 Full structured breakdown (morning, afternoon, total, remaining $\boxed{45}$) |
+| **Conceptual Analogy** | *"What is the difference between a software library and a framework?"* | ❌ Repeats identical definition 8 times in a loop | 🌟 Good toolbox vs. blueprint analogy | 🌟 Detailed breakdown with intuitive library vs. architectural blueprint analogies |
+| **Scientific Explanation** | *"Explain in simple terms why the sky is blue."* | ❌ Explains 1 sentence, then hallucinates *"Q2/Q3: Rainbow vs Spectrum"* | ⚠️ Explains Rayleigh scattering briefly | 🌟 Comprehensive Rayleigh scattering + sunset redshift + human eye perception |
+| **Multi-Constraint Advice** | *"What are three practical tips for staying focused while studying?"* | ❌ Gives 8 bullets, then hallucinates circle & triangle area formulas | ⚠️ 3 generic brief bullet points | 🌟 3 actionable strategies (Dedicated space, Goal decomposition, Pomodoro 25/5 technique) |
+| **Professional Email** | *"Write a polite email explaining 2-day weather shipment delay."* | ❌ Hallucinates driver handbook (*"Step 5: Deliver... Chapter 10: Relationships"*) | 🌟 Functional email template with bracket placeholders | 🌟 Polished, empathetic corporate communication with natural phrasing and sign-off |
+| **Creative Coding** | *"Python function to check palindrome with docstring and example."* | ❌ Writes 2-line code, then hallucinates *"Write pangram function"* loops | ⚠️ **Missed Constraints:** No docstring, no runnable examples | 🌟 **100% Constraint Following:** Complete docstring, empty string check, and runnable example usage |
+
+### 💡 Core Qualitative Takeaways:
+1. **Zero Hallucination Loops:** While the Base model regularly collapsed into repetitive loops across 6/7 prompts, the DPO model adhered strictly to ChatML turn termination (`<|im_end|>`).
+2. **Superior Multi-Constraint Following:** When prompts specify formatting constraints (e.g. *"three tips"*, *"include docstrings and examples"*), SFT frequently misses sub-rules whereas DPO satisfies 100% of the requirements.
+3. **Autonomous Reasoning Rigor:** DPO naturally structures complex explanations using algebraic conversions, step-by-step logic, and clean markdown presentation.
+
+---
+
 ## 📂 Repository Structure
 
 ```
@@ -110,10 +131,13 @@ In initial iterations using length-biased heuristic datasets (Orca), DPO produce
 ├── 05_dpo_eval.ipynb            # DPO evaluation & CoT assessment
 ├── 06_compare_and_report.ipynb  # Tournament reporting & LLM-as-a-Judge
 ├── evaluation_and_report_pipeline.ipynb # All-in-one standalone evaluation pipeline
-├── app.py                       # Interactive Gradio Side-by-Side Arena
+├── arena_live_demo.ipynb        # Interactive Side-by-Side Gradio Alignment Arena
+├── app.py                       # Python script for local Gradio arena
+├── arena_showcase.csv           # Multi-prompt qualitative evaluation dataset
+├── final_comparison.csv         # Consolidated quantitative metric table
+├── llm_judge_results.csv        # Detailed Llama-3.3-70B judge rationale & decisions
 ├── config.py                    # Global hyperparameters & path configuration
-├── eval_utils.py                # Evaluation harness, metric calculators, and API judges
-└── generate_notebooks.py        # Python script to Jupyter notebook compiler
+└── eval_utils.py                # Evaluation harness, metric calculators, and API judges
 ```
 
 ---
