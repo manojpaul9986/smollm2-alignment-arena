@@ -44,14 +44,14 @@ This repository implements the full post-training lifecycle: **Supervised Fine-T
 
 ```mermaid
 flowchart TD
-    A["Raw Base Model<br/><b>SmolLM2-1.7B</b><br/>(8% GSM8K | 20% Instr)"] -->|SFT Training<br/>SmolTalk (4k)| B["SFT Policy<br/><b>LoRA Adapter</b><br/>(37% GSM8K | 64% Instr)"]
-    B -->|Weight Merge<br/>merge_and_unload| C["Merged SFT Starting Policy<br/>& Reference Model π_ref"]
-    C -->|DPO Alignment<br/>UltraFeedback Binarized<br/>(Score Gap ≥ 1.0, β=0.05)| D["DPO Policy<br/><b>Stacked LoRA</b><br/>(72% Instr | 44% CoT | 57.1% Win Rate)"]
+    A["Raw Base Model<br/>SmolLM2-1.7B<br/>(8% GSM8K | 20% Instr)"] -->|"SFT Training (SmolTalk 4k)"| B["SFT Policy<br/>LoRA Adapter<br/>(37% GSM8K | 64% Instr)"]
+    B -->|"Weight Merge (merge_and_unload)"| C["Merged SFT Starting Policy<br/>& Reference Model"]
+    C -->|"DPO Alignment (UltraFeedback, Score Gap >= 1.0, beta=0.05)"| D["DPO Policy<br/>Stacked LoRA<br/>(72% Instr | 44% CoT | 57.1% Win Rate)"]
     
     D --> E["Automated Multi-Metric Evaluation"]
-    E --> F["Perplexity & GSM8K"]
-    E --> G["Constraint Instruction Acc"]
-    E --> H["Log-Prob Reward Margins"]
+    E --> F["Perplexity & GSM8K Reasoning"]
+    E --> G["Constraint Instruction Accuracy"]
+    E --> H["Log-Probability Reward Margins"]
     E --> I["Llama-3.3-70B Judge Tournament"]
 ```
 
