@@ -87,7 +87,7 @@ if __name__ == "__main__":
         print(f"Generating answers from {label} model...")
         model, tok = load_model_and_tokenizer(path, is_chat=chat)
         for p in showcase_prompts:
-            resp = generate(model, tok, p, chat=chat, max_new_tokens=150)
+            resp = generate(model, tok, p, chat=chat, max_new_tokens=250)
             responses[p][label] = resp
         del model
         torch.cuda.empty_cache()

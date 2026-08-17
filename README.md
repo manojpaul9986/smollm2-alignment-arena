@@ -35,6 +35,7 @@ This repository implements the full post-training lifecycle: **Supervised Fine-T
    Achieved an 8.0% absolute accuracy boost on multi-constraint instruction tasks (e.g. strict word count limits, negative constraints, and structured formats).
 3. **57.1% LLM-as-a-Judge Win Rate:**
    Evaluated under **Llama-3.3-70B-Versatile** in blind head-to-head qualitative matchups across logical reasoning, concise conceptual analogies, math problem-solving, and communication tasks.
+   > **Note on Evaluation Token Budgets:** Under a strict 150-token generation cap, SFT was selected on 2 prompts solely because DPO's detailed Chain-of-Thought reasoning hit the token truncation limit mid-sentence. Expanding the generation budget to 250 tokens avoids truncation penalties and captures full reasoning trajectories.
 4. **Resolved DPO Policy Collapse:**
    Overcame initial alignment failure (length-heuristic Orca DPO yielding $\Delta r \approx 0.001$ and 88% overlap) by engineering a high-contrast filtering pipeline on UltraFeedback ($\Delta \text{score} \ge 1.0$, $\beta=0.05$), expanding validation reward margin to **+0.527**.
 
