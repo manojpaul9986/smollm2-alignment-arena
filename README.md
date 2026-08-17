@@ -74,14 +74,16 @@ flowchart TD
   def is_high_quality(sample):
       return (sample["score_chosen"] - sample["score_rejected"]) >= 1.0
   ```
-* **Objective:** Optimize policy $\pi_\theta$ to maximize implicit reward while penalizing drift from reference policy $\pi_{\text{ref}}$:
-  $$\mathcal{L}_{\text{DPO}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(x, y_w, y_l)} \left[ \log \sigma \left( \beta \log \frac{\pi_\theta(y_w \mid x)}{\pi_{\text{ref}}(y_w \mid x)} - \beta \log \frac{\pi_\theta(y_l \mid x)}{\pi_{\text{ref}}(y_l \mid x)} \right) \right]$$
+* **Objective:** Direct Preference Optimization optimizes the policy $\pi_\theta$ directly on preference pairs $(x, y_w, y_l)$ relative to the reference policy $\pi_{\text{ref}}$:
+
+$$\mathcal{L}_{\text{DPO}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(x, y_w, y_l)} \left[ \log \sigma \left( \beta \log \frac{\pi_\theta(y_w \mid x)}{\pi_{\text{ref}}(y_w \mid x)} - \beta \log \frac{\pi_\theta(y_l \mid x)}{\pi_{\text{ref}}(y_l \mid x)} \right) \right]$$
+
 * **Hyperparameters:**
-  * $\beta = 0.05$ (sharper preference gradient)
-  * $\text{Learning Rate} = 2 \times 10^{-5}$
-  * $\text{Epochs} = 3$ (501 optimization steps)
-  * $\text{Max Sequence Length} = 512$
-  * $\text{Warmup Steps} = 20$
+  * **Beta ($\beta$):** `0.05` (sharper preference gradient)
+  * **Learning Rate:** `2e-5` (cosine schedule)
+  * **Epochs:** `3` (501 optimization steps)
+  * **Max Sequence Length:** `512`
+  * **Warmup Steps:** `20`
 
 ---
 
